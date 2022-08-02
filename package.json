@@ -1,0 +1,53 @@
+{
+  "name": "@leanera/vue-i18n",
+  "type": "module",
+  "version": "0.1.0",
+  "packageManager": "pnpm@7.8.0",
+  "description": "Lightweight internationalization plugin for Vue",
+  "author": "LeanERA GmbH",
+  "license": "MIT",
+  "homepage": "https://github.com/leanera/vue-i18n#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leanera/vue-i18n.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leanera/vue-i18n/issues"
+  },
+  "keywords": ["vue", "i18n", "translation", "localization"],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "release": "bumpp --commit --push --tag",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "peerDependencies": {
+    "vue": "^3"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.25.2",
+    "@types/node": "^18.6.3",
+    "bumpp": "^8.2.1",
+    "eslint": "^8.21.0",
+    "typescript": "^4.7.4",
+    "unbuild": "^0.7.6",
+    "vite": "^3.0.4",
+    "vue": "^3.2.37",
+    "vue-tsc": "^0.39.4"
+  }
+}
