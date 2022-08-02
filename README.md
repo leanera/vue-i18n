@@ -1,4 +1,4 @@
-# 🌐 @leanera/vue-i18n
+# @leanera/vue-i18n
 
 [![npm version](https://img.shields.io/npm/v/@leanera/vue-i18n?color=a1b858&label=)](https://www.npmjs.com/package/@leanera/vue-i18n)
 
@@ -76,7 +76,7 @@ Locale messages:
 const messages = {
   en: {
     messages: {
-      hello: '{0} world',
+      hello: '{0} World',
     },
   },
 }
@@ -91,7 +91,7 @@ Template:
 Output:
 
 ```html
-<p>My world</p>
+<p>My World</p>
 ```
 
 List formatting also accepts array-like objects:
@@ -191,4 +191,4 @@ app.mount('#app')
 
 [MIT](./LICENSE) License © 2022 [LeanERA GmbH](https://github.com/leanera)
 
-[MIT](./LICENSE) License © 2022 [webkong](https://github.com/webkong)
+[MIT](./LICENSE) License © 2020 [webkong](https://github.com/webkong)
