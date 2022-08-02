@@ -1,7 +1,7 @@
 {
   "name": "@leanera/vue-i18n",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packageManager": "pnpm@7.8.0",
   "description": "Lightweight internationalization plugin for Vue",
   "author": "LeanERA GmbH",
@@ -14,7 +14,12 @@
   "bugs": {
     "url": "https://github.com/leanera/vue-i18n/issues"
   },
-  "keywords": ["vue", "i18n", "translation", "localization"],
+  "keywords": [
+    "vue",
+    "i18n",
+    "translation",
+    "localization"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
