@@ -9,11 +9,14 @@ export interface I18nConfig {
 }
 
 export interface I18nInstance {
-  messages: Messages
   locales?: string[]
   locale: Ref<string>
+  messages: Messages
   t: (key: string, params?: any) => string
   setLocale: (locale: string) => void
   getLocale: () => string
+}
+
+export interface CreateI18nInstance extends I18nInstance {
   install(app: App): void
 }
