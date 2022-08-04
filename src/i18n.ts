@@ -1,4 +1,4 @@
-import { inject, ref } from 'vue'
+import { ref } from 'vue'
 import type { App, InjectionKey } from 'vue'
 import type { I18nConfig, I18nInstance, Messages } from './types'
 
@@ -52,10 +52,6 @@ export function createI18n(config: I18nConfig): I18nInstance {
       app.config.globalProperties.$i18n = this
     },
   }
-}
-
-export function useI18n() {
-  return inject(injectionKey) as Omit<I18nInstance, 'install'>
 }
 
 function parseAndReplaceString(
