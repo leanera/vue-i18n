@@ -1,10 +1,10 @@
 import { ref } from 'vue'
 import type { App, InjectionKey } from 'vue'
-import type { CreateI18nInstance, I18nConfig, I18nInstance, Messages } from './types'
+import type { I18nConfig, I18nInstance, Messages } from './types'
 
 export const injectionKey = Symbol('i18n') as InjectionKey<I18nInstance>
 
-export function createI18n(config: I18nConfig): CreateI18nInstance {
+export function createI18n(config: I18nConfig): I18nInstance {
   const { defaultLocale, locales, messages } = config
   const fallbackLocale = 'en'
   const locale = ref(defaultLocale || fallbackLocale)

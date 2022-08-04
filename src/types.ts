@@ -15,8 +15,5 @@ export interface I18nInstance {
   t: (key: string, params?: any) => string
   setLocale: (locale: string) => void
   getLocale: () => string
-}
-
-export interface CreateI18nInstance extends I18nInstance {
   install(app: App): void
 }

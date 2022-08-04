@@ -2,6 +2,7 @@ import type { I18nInstance } from './types'
 
 declare module 'vue' {
   interface ComponentCustomProperties {
+    $i18n: I18nInstance
     $t: I18nInstance['t']
   }
 }
