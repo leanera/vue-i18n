@@ -2,7 +2,7 @@
   "name": "@leanera/vue-i18n",
   "type": "module",
   "version": "0.2.1",
-  "packageManager": "pnpm@7.8.0",
+  "packageManager": "pnpm@7.11.0",
   "description": "Lightweight internationalization plugin for Vue",
   "author": "LeanERA GmbH <https://github.com/leanera>",
   "license": "MIT",
@@ -45,14 +45,14 @@
     "vue": "^3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.25.2",
-    "@types/node": "^18.6.3",
+    "@antfu/eslint-config": "^0.26.3",
+    "@types/node": "^18.7.16",
     "bumpp": "^8.2.1",
-    "eslint": "^8.21.0",
-    "typescript": "^4.7.4",
-    "unbuild": "^0.7.6",
-    "vite": "^3.0.4",
-    "vue": "^3.2.37",
-    "vue-tsc": "^0.39.4"
+    "eslint": "^8.23.1",
+    "typescript": "^4.8.3",
+    "unbuild": "^0.8.11",
+    "vite": "^3.1.0",
+    "vue": "^3.2.39",
+    "vue-tsc": "^0.40.13"
   }
 }
