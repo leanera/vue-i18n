@@ -8,5 +8,5 @@ declare module 'vue' {
 }
 
 export { createI18n } from './i18n'
-export { useI18n } from './useApi'
+export { useI18n } from './composables'
 export * from './types'
