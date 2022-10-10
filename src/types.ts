@@ -1,4 +1,4 @@
-import type { App, ComputedRef, Ref } from 'vue'
+import type { App, Ref } from 'vue'
 
 export type Messages = Record<string, Record<string, any>>
 
@@ -13,7 +13,7 @@ export interface I18nInstance {
   locale: Ref<string>
   locales: string[]
   messages: Messages
-  t: (key: string, params?: any) => ComputedRef<string>
+  t: (key: string, params?: any) => string
   setLocale: (locale: string) => void
   getLocale: () => string
   addMessages: (newMessages: Messages) => void

@@ -6,9 +6,7 @@
 
 ## Key Features
 
-- 🔃 Reactive by default
-  - Reactive locale messages – perfect for lazily added messages
-  - Translation helper `t()` returns computed getter
+- 🔃 Reactive locale messages – perfect for lazily added messages
 - 🗜 Composable usage with `useI18n`
 - 📯 Global properties `$t` and `$i18n` accessible in templates
 
@@ -65,13 +63,11 @@ Done! Now you can retrieve translated keys in your components:
 const i18n = useI18n()
 const { t, setLocale } = i18n
 
-// Returns a `ComputedRef<string>`
 t('intro', { name: 'John' }) // `Welcome, John`
 
 // Set new locale
 setLocale('de')
 
-// Returns a `ComputedRef<string>`
 t('intro', { name: 'John' }) // `Willkommen, John`
 ```
 
@@ -187,7 +183,7 @@ interface UseI18n {
   locale: Ref<string>
   locales: string[]
   messages: Messages
-  t: (key: string, params?: any) => ComputedRef<string>
+  t: (key: string, params?: any) => string
   setLocale: (locale: string) => void
   getLocale: () => string
   addMessages: (newMessages: Messages) => void

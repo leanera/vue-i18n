@@ -1,4 +1,4 @@
-import { computed, reactive, ref } from 'vue'
+import { reactive, ref } from 'vue'
 import type { App, InjectionKey } from 'vue'
 import { recursiveRetrieve } from './utils'
 import type { I18nConfig, I18nInstance, Messages, UseI18n } from './types'
@@ -12,20 +12,18 @@ export function createI18n(config: I18nConfig): I18nInstance {
   const locales = config.locales || (Object.keys(messages).length ? Object.keys(messages) : [locale.value])
 
   const t = (key: string, params?: Record<string, any>) => {
-    return computed(() => {
-      if (typeof key !== 'string') {
-        console.warn('[i18n]', `Message "${key}" must be a string`)
-        return ''
-      }
+    if (typeof key !== 'string') {
+      console.warn('[i18n]', `Message "${key}" must be a string`)
+      return ''
+    }
 
-      try {
-        return recursiveRetrieve(key.split('.'), messages[locale.value], params)
-      }
-      catch (error) {
-        console.warn('[i18n]', error)
-        return ''
-      }
-    })
+    try {
+      return recursiveRetrieve(key.split('.'), messages[locale.value], params)
+    }
+    catch (error) {
+      console.warn('[i18n]', error)
+      return ''
+    }
   }
 
   const setLocale = (loc: string) => {
