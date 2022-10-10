@@ -1,14 +1,19 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { useI18n } from '@leanera/vue-i18n'
 
 const i18n = useI18n()
-
-const locale = computed(() => i18n.locale.value)
+const { locale, setLocale, addMessages } = i18n
 
 function switchLocale() {
-  const locale = i18n.getLocale() === 'en' ? 'de' : 'en'
-  i18n.setLocale(locale)
+  setLocale(locale.value === 'en' ? 'de' : 'en')
+}
+
+function changeMessages() {
+  addMessages({
+    en: {
+      test: 'Overwritten message `test`',
+    },
+  })
 }
 </script>
 
@@ -16,15 +21,18 @@ function switchLocale() {
   <button @click="switchLocale()">
     Switch locale
   </button>
+  <button @click="changeMessages()">
+    Listen to reactive messages changes
+  </button>
   <p>
     <strong>{{ locale }}</strong>
   </p>
   <p>{{ $t("test") }}</p>
-  <!-- array -->
+  <!-- Array -->
   <p>{{ $t("menu[0]") }}</p>
-  <!-- object -->
+  <!-- Object -->
   <p>{{ $t("object.foo") }}</p>
-  <!-- parse -->
+  <!-- Parse -->
   <p>{{ $t("parse", { name: "LeanERA" }) }}</p>
   <p>{{ $t("parses.foo", { name: "LeanERA" }) }}</p>
 </template>
