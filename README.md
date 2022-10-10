@@ -4,6 +4,14 @@
 
 > Lightweight internationalization plugin for Vue.
 
+## Key Features
+
+- 🔃 Reactive by default
+  - Reactive locale messages – perfect for lazily added messages
+  - Translation helper `t()` returns computed getter
+- 🗜 Composable usage with `useI18n`
+- 📯 Global properties `$t` and `$i18n` accessible in templates
+
 ## Setup
 
 ```bash
@@ -16,158 +24,30 @@ npm i @leanera/vue-i18n
 
 ## Usage
 
-### General Formatting
+> [📖 Check out the playground](./playground/)
 
-Locale messages:
-
-```ts
-const messages = {
-  en: {
-    messages: {
-      hello: 'Hello World',
-    },
-  },
-}
-```
-
-Template:
-
-```html
-<p>{{ $t('messages.hello') }}</p>
-```
-
-Output:
-
-```html
-<p>Hello World</p>
-```
-
-### Named Formatting
-
-Locale messages:
+To make use of `@leanera/vue-i18n` in your components, initialize the `i18n` instance:
 
 ```ts
-const messages = {
-  en: {
-    messages: {
-      hello: '{msg} World'
-    }
-  }
-}
-```
-
-Template:
-
-```html
-<p>{{ $t('messages.hello', { msg: 'My' }) }}</p>
-```
-
-Output:
-
-```html
-<p>My World</p>
-```
-
-### List Formatting
-
-Locale messages:
-
-```ts
-const messages = {
-  en: {
-    messages: {
-      hello: '{0} World',
-    },
-  },
-}
-```
-
-Template:
-
-```html
-<p>{{ $t('messages.hello', ['My']) }}</p>
-```
-
-Output:
-
-```html
-<p>My World</p>
-```
-
-List formatting also accepts array-like objects:
-
-```html
-<p>{{ $t('messages.hello', {'0': 'My'}) }}</p>
-```
-
-Output:
-
-```html
-<p>My World</p>
-```
-
-### Usage Inside A Component
-
-Locale messages:
-
-```ts
+// plugins/i18n.ts
 import { createI18n } from '@leanera/vue-i18n'
-import type { Messages } from '@leanera/vue-i18n'
-
-const messages: Messages = {
-  en: {
-    menu: ['Home'],
-    test: 'Test',
-    object: { foo: 'bar' },
-    parse: 'Welcome to {name}',
-    parses: { foo: 'Welcome to {name}' },
-  },
-  de: {
-    menu: ['Start'],
-    test: 'Test',
-    object: { foo: 'bar' },
-    parse: 'Willkommen bei {name}',
-    parses: { foo: 'Willkommen bei {name}' },
-  },
-}
 
 const i18n = createI18n({
   defaultLocale: 'en',
-  messages,
+  messages: {
+    en: {
+      intro: 'Welcome, {name}',
+    },
+    de: {
+      intro: 'Willkommen, {name}',
+    },
+  },
 })
 
 export default i18n
 ```
 
-Component:
-
-```vue
-<script setup lang="ts">
-import { useI18n } from '@leanera/vue-i18n'
-
-const i18n = useI18n()
-
-const setLocale = (locale: string) => {
-  i18n.setLocale(locale)
-}
-</script>
-
-<template>
-  <p>{{ $t("test") }}</p>
-
-  <!-- Array syntax -->
-  <p>{{ $t("menu[0]") }}</p>
-
-  <!-- Object syntax -->
-  <p>{{ $t("object.foo") }}</p>
-
-  <!-- Parsing -->
-  <p>{{ $t("parse", { name: "LeanERA" }) }}</p>
-  <p>{{ $t("parses.foo", { name: "LeanERA" }) }}</p>
-</template>
-```
-
-Entry point:
+Inside your app's entry point, import the `i18n` instance and add it you Vue:
 
 ```ts
 // main.ts
@@ -177,6 +57,162 @@ import i18n from './i18n'
 const app = createApp(App)
 app.use(i18n)
 app.mount('#app')
+```
+
+Done! Now you can retrieve translated keys in your components:
+
+```ts
+const i18n = useI18n()
+const { t, setLocale } = i18n
+
+// Returns a `ComputedRef<string>`
+t('intro', { name: 'John' }) // `Welcome, John`
+
+// Set new locale
+setLocale('de')
+
+// Returns a `ComputedRef<string>`
+t('intro', { name: 'John' }) // `Willkommen, John`
+```
+
+## Message Formatting
+
+### General Formatting
+
+**Locale messages**
+
+```ts
+const messages = {
+  en: {
+    intro: 'Hello World',
+  },
+}
+```
+
+**Template**
+
+```html
+<p>{{ $t('intro') }}</p>
+```
+
+**Output**
+
+```html
+<p>Hello World</p>
+```
+
+### Named Formatting
+
+**Locale messages**
+
+```ts
+const messages = {
+  en: {
+    intro: '{msg} World'
+  }
+}
+```
+
+**Template**
+
+```html
+<p>{{ $t('intro', { msg: 'My' }) }}</p>
+```
+
+**Output**
+
+```html
+<p>My World</p>
+```
+
+### List Formatting
+
+**Locale messages**
+
+```ts
+const messages = {
+  en: {
+    intro: '{0} World',
+  },
+}
+```
+
+**Template**
+
+```html
+<p>{{ $t('intro', ['My']) }}</p>
+```
+
+**Output**
+
+```html
+<p>My World</p>
+```
+
+List formatting also accepts array-like objects:
+
+```html
+<p>{{ $t('intro', {'0': 'My'}) }}</p>
+```
+
+**Output**
+
+```html
+<p>My World</p>
+```
+
+## API
+
+### `$t` & `$i18n`
+
+The properties `$t` as well as `$i18n` are available globally in your templates.
+
+Example:
+
+```html
+<p>{{ $t('intro') }}</p>
+```
+
+### `useI18n`
+
+Instead of `$t` and `$i18n` you can import the `useI18n` composable to access the current i18n instance. The `useI18n` composable is available in the `setup` hook (entry point for Composition API usage).
+
+**Types**
+
+```ts
+function useI18n(): UseI18n
+
+interface UseI18n {
+  defaultLocale: string
+  locale: Ref<string>
+  locales: string[]
+  messages: Messages
+  t: (key: string, params?: any) => ComputedRef<string>
+  setLocale: (locale: string) => void
+  getLocale: () => string
+  addMessages: (newMessages: Messages) => void
+}
+```
+
+**Example**
+
+```ts
+import { useI18n } from '@leanera/vue-i18n'
+
+const i18n = useI18n()
+const {
+  defaultLocale,
+  locale,
+  locales,
+  messages,
+  t,
+  setLocale,
+  getLocale,
+  addMessages
+} = i18n
+
+console.log(defaultLocale === locale.value) // true
+console.log(t('foo').value) // `bar`
 ```
 
 ## 💻 Development
