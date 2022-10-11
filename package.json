@@ -1,7 +1,7 @@
 {
   "name": "@leanera/vue-i18n",
   "type": "module",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "packageManager": "pnpm@7.11.0",
   "description": "Lightweight internationalization plugin for Vue",
   "author": "LeanERA GmbH <https://github.com/leanera>",
