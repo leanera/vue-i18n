@@ -14,7 +14,7 @@ export interface I18nInstance {
   locales: readonly string[]
   messages: LocaleMessages
   t: (key: string, params?: any) => string
-  setLocale: (locale: string) => void
+  setLocale: (newLocale: string) => void
   getLocale: () => string
   addMessages: (newMessages: LocaleMessages) => void
   install(app: App): void

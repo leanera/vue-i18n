@@ -3,6 +3,8 @@ import type { App, InjectionKey } from 'vue'
 import { recursiveRetrieve } from './utils'
 import type { I18nConfig, I18nInstance, LocaleMessages, UseI18n } from './types'
 
+const CONSOLE_PREFIX = '[vue-i18n]'
+
 export const injectionKey = Symbol('i18n') as InjectionKey<UseI18n>
 
 export function createI18n(config: I18nConfig): I18nInstance {
@@ -13,7 +15,7 @@ export function createI18n(config: I18nConfig): I18nInstance {
 
   const t = (key: string, params?: Record<string, any>) => {
     if (typeof key !== 'string') {
-      console.warn('[i18n]', `Message "${key}" must be a string`)
+      console.warn(CONSOLE_PREFIX, `Message "${key}" must be a string`)
       return ''
     }
 
@@ -21,31 +23,31 @@ export function createI18n(config: I18nConfig): I18nInstance {
       return recursiveRetrieve(key.split('.'), messages[locale.value], params)
     }
     catch (error) {
-      console.warn('[i18n]', error)
+      console.warn(CONSOLE_PREFIX, error)
       return ''
     }
   }
 
-  const setLocale = (loc: string) => {
-    if (!messages[loc]) {
+  const setLocale = (newLocale: string) => {
+    if (!locales.includes(newLocale)) {
       console.warn(
-        '[i18n]',
-        `Messages for locale "${loc}" not found. Available locale message: ${Object.keys(messages).join(', ')}`,
+        CONSOLE_PREFIX,
+        `Locale "${newLocale}" is not defined in the locales list. Available locales: ${locales.join(', ')}`,
       )
       return
     }
 
-    locale.value = loc
+    locale.value = newLocale
   }
 
   const getLocale = () => locale.value
 
   const addMessages = (newMessages: LocaleMessages) => {
-    for (const loc of Object.keys(newMessages)) {
-      if (!messages[loc])
-        messages[loc] = {}
+    for (const key of Object.keys(newMessages)) {
+      if (!messages[key])
+        messages[key] = {}
 
-      Object.assign(messages[loc], newMessages[loc])
+      Object.assign(messages[key], newMessages[key])
     }
   }
 
