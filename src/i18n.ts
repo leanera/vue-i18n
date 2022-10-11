@@ -1,7 +1,7 @@
 import { computed, reactive, ref } from 'vue'
 import type { App, InjectionKey } from 'vue'
 import { recursiveRetrieve } from './utils'
-import type { I18nConfig, I18nInstance, Messages, UseI18n } from './types'
+import type { I18nConfig, I18nInstance, LocaleMessages, UseI18n } from './types'
 
 export const injectionKey = Symbol('i18n') as InjectionKey<UseI18n>
 
@@ -40,7 +40,7 @@ export function createI18n(config: I18nConfig): I18nInstance {
 
   const getLocale = () => locale.value
 
-  const addMessages = (newMessages: Messages) => {
+  const addMessages = (newMessages: LocaleMessages) => {
     for (const loc of Object.keys(newMessages)) {
       if (!messages[loc])
         messages[loc] = {}

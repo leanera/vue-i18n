@@ -1,8 +1,6 @@
-import type { Messages } from './types'
-
 export function recursiveRetrieve(
   chain: string[],
-  messages: Messages,
+  messages: Record<string, any>,
   params?: Record<string, any>,
 ): string {
   const key = chain[0]

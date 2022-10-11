@@ -1,22 +1,22 @@
 import type { App, ComputedRef } from 'vue'
 
-export type Messages = Record<string, Record<string, any>>
+export type LocaleMessages = Record<string, Record<string, any>>
 
 export interface I18nConfig {
   defaultLocale?: string
   locales?: string[]
-  messages?: Messages
+  messages?: LocaleMessages
 }
 
 export interface I18nInstance {
   defaultLocale: string
   locale: ComputedRef<string>
   locales: readonly string[]
-  messages: Messages
+  messages: LocaleMessages
   t: (key: string, params?: any) => string
   setLocale: (locale: string) => void
   getLocale: () => string
-  addMessages: (newMessages: Messages) => void
+  addMessages: (newMessages: LocaleMessages) => void
   install(app: App): void
 }
 
