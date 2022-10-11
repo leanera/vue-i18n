@@ -1,4 +1,4 @@
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import type { App, InjectionKey } from 'vue'
 import { recursiveRetrieve } from './utils'
 import type { I18nConfig, I18nInstance, Messages, UseI18n } from './types'
@@ -51,8 +51,8 @@ export function createI18n(config: I18nConfig): I18nInstance {
 
   return {
     defaultLocale,
-    locale,
-    locales,
+    locale: computed(() => locale.value),
+    locales: Object.freeze(locales),
     messages,
     t,
     setLocale,

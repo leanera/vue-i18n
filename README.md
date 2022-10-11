@@ -61,13 +61,15 @@ Done! Now you can retrieve translated keys in your components:
 
 ```ts
 const i18n = useI18n()
-const { t, setLocale } = i18n
+const { locale, t, setLocale } = i18n
 
+locale.value // `en`
 t('intro', { name: 'John' }) // `Welcome, John`
 
 // Set new locale
 setLocale('de')
 
+locale.value // `de`
 t('intro', { name: 'John' }) // `Willkommen, John`
 ```
 
@@ -180,8 +182,8 @@ function useI18n(): UseI18n
 
 interface UseI18n {
   defaultLocale: string
-  locale: Ref<string>
-  locales: string[]
+  locale: ComputedRef<string>
+  locales: readonly string[]
   messages: Messages
   t: (key: string, params?: any) => string
   setLocale: (locale: string) => void
