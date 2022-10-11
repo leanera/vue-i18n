@@ -7,8 +7,8 @@
 ## Key Features
 
 - 🔃 Reactive locale messages – perfect for lazily added messages
-- 🗜 Composable usage with `useI18n`
-- 📯 Global properties `$t` and `$i18n` accessible in templates
+- 🗜 Composable usage with [`useI18n`](#usei18n)
+- 📯 Global properties [`$t`](#t--i18n) and [`$i18n`](#t--i18n) accessible in templates
 
 ## Setup
 
