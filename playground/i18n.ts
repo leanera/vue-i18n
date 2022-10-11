@@ -1,7 +1,7 @@
 import { createI18n } from '@leanera/vue-i18n'
-import type { Messages } from '@leanera/vue-i18n'
+import type { LocaleMessages } from '@leanera/vue-i18n'
 
-const messages: Messages = {
+const messages: LocaleMessages = {
   en: {
     menu: ['Home'],
     test: 'Test',
