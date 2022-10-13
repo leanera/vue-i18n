@@ -75,9 +75,9 @@ t('intro', { name: 'John' }) // `Willkommen, John`
 
 ## Message Formatting
 
-### General Formatting
+<table><tr><td width="500px" valign="top">
 
-**Locale messages**
+### General Formatting
 
 ```ts
 const messages = {
@@ -86,6 +86,8 @@ const messages = {
   },
 }
 ```
+
+</td><td width="500px"><br>
 
 **Template**
 
@@ -99,9 +101,9 @@ const messages = {
 <p>Hello World</p>
 ```
 
-### Named Formatting
+</td></tr><tr><td width="500px" valign="top">
 
-**Locale messages**
+### Named Formatting
 
 ```ts
 const messages = {
@@ -110,6 +112,8 @@ const messages = {
   }
 }
 ```
+
+</td><td width="500px"><br>
 
 **Template**
 
@@ -123,9 +127,9 @@ const messages = {
 <p>My World</p>
 ```
 
-### List Formatting
+</td></tr><tr><td width="500px" valign="top">
 
-**Locale messages**
+### List Formatting
 
 ```ts
 const messages = {
@@ -134,6 +138,8 @@ const messages = {
   },
 }
 ```
+
+</td><td width="500px"><br>
 
 **Template**
 
@@ -147,7 +153,11 @@ const messages = {
 <p>My World</p>
 ```
 
+---
+
 List formatting also accepts array-like objects:
+
+**Template**
 
 ```html
 <p>{{ $t('intro', {'0': 'My'}) }}</p>
@@ -158,6 +168,8 @@ List formatting also accepts array-like objects:
 ```html
 <p>My World</p>
 ```
+
+</td></tr></table>
 
 ## API
 
