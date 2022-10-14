@@ -1,7 +1,7 @@
 import { computed, reactive, ref } from 'vue'
 import type { App, InjectionKey } from 'vue'
 import { recursiveRetrieve } from './utils'
-import type { I18nConfig, I18nInstance, LocaleMessages, UseI18n } from './types'
+import type { I18nConfig, I18nInstance, UseI18n } from './types'
 
 const CONSOLE_PREFIX = '[vue-i18n]'
 
