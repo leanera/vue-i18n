@@ -10,11 +10,8 @@ export function recursiveRetrieve(
     const [objKey, rest] = key.split('[')
     const num = parseInt(rest.replace(']', ''))
 
-    if (num < 0) {
-      throw new Error(
-          `Invalid array index "${num}" for message "${chain.join('.')}"`,
-      )
-    }
+    if (num < 0)
+      throw new Error(`Invalid array index "${num}" for message "${chain.join('.')}"`)
 
     const message = messages[objKey][num]
 
