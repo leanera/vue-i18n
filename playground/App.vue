@@ -2,18 +2,14 @@
 import { useI18n } from '@leanera/vue-i18n'
 
 const i18n = useI18n()
-const { locale, setLocale, addMessages } = i18n
+const { locale, messages, setLocale } = i18n
 
 function switchLocale() {
   setLocale(locale.value === 'en' ? 'de' : 'en')
 }
 
 function changeMessages() {
-  addMessages({
-    en: {
-      test: 'Overwritten message `test`',
-    },
-  })
+  messages.en.test = 'Overwritten message `test`'
 }
 </script>
 

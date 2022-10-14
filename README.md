@@ -200,7 +200,6 @@ interface UseI18n {
   t: (key: string, params?: any) => string
   setLocale: (locale: string) => void
   getLocale: () => string
-  addMessages: (messages: LocaleMessages) => void
 }
 ```
 
@@ -217,8 +216,7 @@ const {
   messages,
   t,
   setLocale,
-  getLocale,
-  addMessages
+  getLocale
 } = i18n
 
 console.log(defaultLocale === locale.value) // true

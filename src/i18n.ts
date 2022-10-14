@@ -42,15 +42,6 @@ export function createI18n(config: I18nConfig): I18nInstance {
 
   const getLocale = () => locale.value
 
-  const addMessages = (newMessages: LocaleMessages) => {
-    for (const key of Object.keys(newMessages)) {
-      if (!messages[key])
-        messages[key] = {}
-
-      Object.assign(messages[key], newMessages[key])
-    }
-  }
-
   return {
     defaultLocale,
     locale: computed(() => locale.value),
@@ -59,7 +50,6 @@ export function createI18n(config: I18nConfig): I18nInstance {
     t,
     setLocale,
     getLocale,
-    addMessages,
     install(app: App) {
       app.provide(injectionKey, this)
       app.config.globalProperties.$t = this.t
