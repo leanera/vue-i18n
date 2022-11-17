@@ -42,4 +42,4 @@ jobs:
         run: pnpm i
 
       - name: Typecheck
-        run: pnpm run typecheck
+        run: pnpm run test:types
