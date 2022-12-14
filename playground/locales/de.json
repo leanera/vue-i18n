@@ -1,0 +1,7 @@
+{
+  "menu": ["Start"],
+  "test": "Test",
+  "object": { "foo": "bar" },
+  "parse": "Willkommen bei {name}",
+  "parses": { "foo": "Willkommen bei {name}" }
+}

@@ -1,26 +1,16 @@
 import { createI18n } from '@leanera/vue-i18n'
-import type { LocaleMessages } from '@leanera/vue-i18n'
 
-const messages: LocaleMessages = {
-  en: {
-    menu: ['Home'],
-    test: 'Test',
-    object: { foo: 'bar' },
-    parse: 'Welcome to {name}',
-    parses: { foo: 'Welcome to {name}' },
-  },
-  de: {
-    menu: ['Start'],
-    test: 'Test',
-    object: { foo: 'bar' },
-    parse: 'Willkommen bei {name}',
-    parses: { foo: 'Willkommen bei {name}' },
-  },
-}
+// Auto-load translations
+const messages = Object.fromEntries(
+  Object.entries(
+    import.meta.glob<Record<string, any>>('./locales/*.json', { eager: true }),
+  ).map(([key, value]) => [key.slice(10, -5), value]),
+)
 
 const i18n = createI18n({
-  defaultLocale: 'en',
+  defaultLocale: 'de',
+  locales: Object.keys(messages),
   messages,
 })
 
-export default i18n
+export { i18n }
