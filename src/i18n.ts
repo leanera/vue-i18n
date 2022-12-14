@@ -1,6 +1,6 @@
 import { computed, reactive, ref } from 'vue'
 import type { App, InjectionKey } from 'vue'
-import { recursiveRetrieve } from './utils'
+import { deepClone, recursiveRetrieve } from './utils'
 import type { I18nConfig, I18nInstance, UseI18n } from './types'
 
 const CONSOLE_PREFIX = '[vue-i18n]'
@@ -9,9 +9,9 @@ export const injectionKey = Symbol('i18n') as InjectionKey<UseI18n>
 
 export function createI18n(config: I18nConfig): I18nInstance {
   const { defaultLocale = 'en' } = config
-  const messages = reactive(config.messages || {})
+  const messages = reactive(deepClone(config.messages ?? {}))
   const locale = ref(defaultLocale)
-  const locales = config.locales || (Object.keys(messages).length ? Object.keys(messages) : [locale.value])
+  const locales = config.locales ?? (Object.keys(messages).length ? Object.keys(messages) : [locale.value])
 
   const t = (key: string, params?: Record<string, any>) => {
     if (typeof key !== 'string') {

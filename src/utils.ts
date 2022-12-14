@@ -1,3 +1,7 @@
+export function deepClone<T>(value: T): T {
+  return JSON.parse(JSON.stringify(value))
+}
+
 export function recursiveRetrieve(
   chain: string[],
   messages: Record<string, any>,
@@ -64,4 +68,3 @@ function parseAndReplaceString(
 
   return _str
 }
-
