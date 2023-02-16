@@ -232,6 +232,6 @@ console.log(t('foo').value) // `bar`
 
 ## License
 
-[MIT](./LICENSE) License © 2022-2023 [LeanERA GmbH](https://github.com/leanera)
+[MIT](./LICENSE) License © 2022-2023 [LeanERA GmbH](https://github.com/leanera) & [Johann Schopplich](https://github.com/johannschopplich)
 
 [MIT](./LICENSE) License © 2020 [webkong](https://github.com/webkong)
