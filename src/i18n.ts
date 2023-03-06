@@ -23,7 +23,7 @@ export function createI18n(config: I18nConfig): I18nInstance {
       return recursiveRetrieve(key.split('.'), messages[locale.value], params)
     }
     catch (error) {
-      console.warn(CONSOLE_PREFIX, error)
+      console.warn(CONSOLE_PREFIX, (error as Error).message)
       return key
     }
   }
