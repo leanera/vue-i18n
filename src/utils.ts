@@ -51,20 +51,22 @@ export function recursiveRetrieve(
 }
 
 function parseAndReplaceString(
-  str: string,
+  value: string,
   params: Record<string, any>,
 ): string {
   const TEMPLATE_RE = /{(\w*)}/g
-  let arr: RegExpExecArray | null
-  let _str = str
+  let regexResult: RegExpExecArray | null
+  let _value = value
 
   // eslint-disable-next-line no-cond-assign
-  while ((arr = TEMPLATE_RE.exec(str)) !== null) {
-    if (!Object.prototype.hasOwnProperty.call(params, arr[1]))
-      throw new Error(`Param "${arr[1]}" not found`)
+  while (regexResult = TEMPLATE_RE.exec(value)) {
+    const paramName = regexResult[1]
 
-    _str = _str.replace(arr[0], params[arr[1]])
+    if (!(paramName in params))
+      throw new Error(`Parameter "${paramName}" not found`)
+
+    _value = _value.replace(regexResult[0], params[paramName])
   }
 
-  return _str
+  return _value
 }
