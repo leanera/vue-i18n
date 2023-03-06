@@ -24,7 +24,7 @@ export function createI18n(config: I18nConfig): I18nInstance {
     }
     catch (error) {
       console.warn(CONSOLE_PREFIX, error)
-      return ''
+      return key
     }
   }
 
