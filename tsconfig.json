@@ -1,17 +1,24 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["ESNext", "DOM", "ScriptHost"],
-    "jsx": "preserve",
+    "useDefineForClassFields": true,
     "module": "ESNext",
-    "moduleResolution": "node",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "paths": {
       "@leanera/vue-i18n": ["./src/index.ts"]
     },
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "node",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
+    "isolatedModules": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true
+    "noEmit": true,
+    "jsx": "preserve",
+
+    /* Linting */
+    "strict": true
   }
 }
