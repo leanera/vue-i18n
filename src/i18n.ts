@@ -1,7 +1,7 @@
 import { computed, reactive, ref } from 'vue'
 import type { App, InjectionKey } from 'vue'
 import { klona } from 'klona/json'
-import { recursiveRetrieve } from './utils'
+import { getLocalizedMessage } from './utils'
 import type { I18nConfig, I18nInstance, UseI18n } from './types'
 
 const CONSOLE_PREFIX = '[vue-i18n]'
@@ -21,7 +21,7 @@ export function createI18n(config: I18nConfig): I18nInstance {
     }
 
     try {
-      return recursiveRetrieve(key.split('.'), messages[locale.value], params)
+      return getLocalizedMessage(key.split('.'), messages[locale.value], params)
     }
     catch (error) {
       console.warn(CONSOLE_PREFIX, (error as Error).message)
