@@ -36,22 +36,28 @@
     "dev": "unbuild --stub",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "test": "vitest",
+    "test:run": "vitest run",
     "test:types": "vue-tsc --noEmit",
     "release": "bumpp --commit --push --tag"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
   },
+  "dependencies": {
+    "klona": "^2.0.6"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^0.38.5",
-    "@types/node": "^18.15.11",
-    "@vitejs/plugin-vue": "^4.1.0",
+    "@types/node": "^18.16.3",
+    "@vitejs/plugin-vue": "^4.2.1",
     "bumpp": "^9.1.0",
-    "eslint": "^8.38.0",
+    "eslint": "^8.39.0",
     "typescript": "^5.0.4",
     "unbuild": "^1.2.1",
-    "vite": "^4.2.2",
+    "vite": "^4.3.4",
+    "vitest": "^0.30.1",
     "vue": "^3.2.47",
-    "vue-tsc": "^1.2.0"
+    "vue-tsc": "^1.6.3"
   }
 }
