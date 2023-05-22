@@ -54,7 +54,7 @@ describe('Recursive retrieve messages', () => {
 
   it('should throw an error when message is not found', () => {
     expect(() => getLocalizedMessage(['en', 'nonexistent'], messages)).toThrowError(
-      'Message "nonexistent" not found',
+      'Message "en.nonexistent" not found',
     )
   })
 
@@ -90,13 +90,13 @@ describe('Recursive retrieve messages', () => {
 
   it('should throw an error for an invalid array index', () => {
     expect(() => getLocalizedMessage(['en', 'arrayWithValues[-1]'], messages)).toThrowError(
-      'Invalid array index "-1" for message "arrayWithValues[-1]"',
+      'Invalid array index "-1" for message "en.arrayWithValues[-1]"',
     )
   })
 
   it('should throw an error for a missing array key', () => {
     expect(() => getLocalizedMessage(['en', 'missingArray[0]'], messages)).toThrowError(
-      'Message "missingArray[0]" not found',
+      'Message "en.missingArray[0]" not found',
     )
   })
 })
