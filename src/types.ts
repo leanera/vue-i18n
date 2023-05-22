@@ -6,6 +6,8 @@ export interface I18nConfig {
   defaultLocale?: string
   locales?: string[]
   messages?: LocaleMessages
+  /** @default 'warn' */
+  logLevel?: 'warn' | 'silent'
 }
 
 export interface I18nInstance {

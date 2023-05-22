@@ -9,14 +9,18 @@ const CONSOLE_PREFIX = '[vue-i18n]'
 export const injectionKey = Symbol('i18n') as InjectionKey<UseI18n>
 
 export function createI18n(config: I18nConfig): I18nInstance {
-  const { defaultLocale = 'en' } = config
+  const {
+    defaultLocale = 'en',
+    logLevel = 'warn',
+  } = config
   const messages = reactive(klona(config.messages ?? {}))
   const locale = ref(defaultLocale)
   const locales = config.locales ?? (Object.keys(messages).length ? Object.keys(messages) : [locale.value])
 
   const t = (key: string, params?: Record<string, any>) => {
     if (typeof key !== 'string') {
-      console.warn(CONSOLE_PREFIX, `Message "${key}" must be a string`)
+      if (logLevel === 'warn')
+        console.warn(CONSOLE_PREFIX, `Message "${key}" must be a string`)
       return ''
     }
 
@@ -24,17 +28,20 @@ export function createI18n(config: I18nConfig): I18nInstance {
       return getLocalizedMessage(key.split('.'), messages[locale.value], params)
     }
     catch (error) {
-      console.warn(CONSOLE_PREFIX, (error as Error).message)
+      if (logLevel === 'warn')
+        console.warn(CONSOLE_PREFIX, (error as Error).message)
       return key
     }
   }
 
   const setLocale = (newLocale: string) => {
     if (!locales.includes(newLocale)) {
-      console.warn(
-        CONSOLE_PREFIX,
+      if (logLevel === 'warn') {
+        console.warn(
+          CONSOLE_PREFIX,
         `Locale "${newLocale}" is not defined in the locales list. Available locales: ${locales.join(', ')}`,
-      )
+        )
+      }
       return
     }
 
