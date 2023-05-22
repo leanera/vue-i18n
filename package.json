@@ -35,7 +35,6 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest",
-    "test:run": "vitest run",
     "test:types": "vue-tsc --noEmit",
     "release": "bumpp --commit --push --tag"
   },
