@@ -11,7 +11,7 @@ export function getLocalizedMessage(
 
   if (key.includes('[')) {
     const [objKey, rest] = key.split('[')
-    const num = parseInt(rest.replace(']', ''))
+    const num = Number.parseInt(rest.replace(']', ''))
 
     if (num < 0)
       throw new Error(`Invalid array index "${num}" for message "${originalChain.join('.')}"`)
@@ -41,7 +41,7 @@ export function getLocalizedMessage(
           throw new Error(`Parameter "${paramName}" not found`)
 
         if (Array.isArray(params)) {
-          if (isNaN(Number(paramName)))
+          if (Number.isNaN(Number(paramName)))
             throw new Error(`Parameter "${paramName}" not found`)
 
           return params[paramName]
