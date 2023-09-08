@@ -1,3 +1,7 @@
+> [!NOTE]
+> The development of this module will continue at the repository [@byjohann/vue-i18n](https://github.com/johannschopplich/vue-i18n) under the scope `@byjohann`.
+> Please migrate to the new package as this one will be deprecated soon.
+
 # @leanera/vue-i18n
 
 [![npm version](https://img.shields.io/npm/v/@leanera/vue-i18n?color=a1b858&label=)](https://www.npmjs.com/package/@leanera/vue-i18n)
